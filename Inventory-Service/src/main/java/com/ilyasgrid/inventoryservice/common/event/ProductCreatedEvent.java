@@ -1,4 +1,14 @@
 package com.ilyasgrid.inventoryservice.common.event;
 
-public record ProductCreatedEvent() {
+import com.ilyasgrid.inventoryservice.common.enums.ProductState;
+
+public record ProductCreatedEvent(
+        String id,
+        String name,
+        double price,
+        int quantity,
+        String categoryId,
+        ProductState state
+
+) {
 }

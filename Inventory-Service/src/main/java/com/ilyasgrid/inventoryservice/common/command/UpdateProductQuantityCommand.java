@@ -1,4 +1,8 @@
 package com.ilyasgrid.inventoryservice.common.command;
 
-public record UpdateProductQuantityCommand() {
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
+
+public record UpdateProductQuantityCommand(@TargetAggregateIdentifier
+                                           String productId,
+                                           int quantity) {
 }
