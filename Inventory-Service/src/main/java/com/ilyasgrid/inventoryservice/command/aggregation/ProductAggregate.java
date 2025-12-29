@@ -24,7 +24,7 @@ public class ProductAggregate {
     public ProductAggregate() { } // Required by Axon
 
     @CommandHandler
-    public ProductAggregate(CreateProductCommand command) {
+    public ProductAggregate( CreateProductCommand command) {
         if (command.price() <= 0) throw new RuntimeException("Price must be positive");
 
         AggregateLifecycle.apply(new ProductCreatedEvent(

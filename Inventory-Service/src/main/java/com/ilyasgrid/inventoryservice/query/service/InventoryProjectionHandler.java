@@ -39,11 +39,7 @@ public class InventoryProjectionHandler {
 
         productRepository.save(product);
     }
-
-//    @QueryHandler
-//    public List<Product> handle(GetAllProductsQuery query) {
-//        return productRepository.findAll();
-//    }
+    
 
 
     @EventHandler
