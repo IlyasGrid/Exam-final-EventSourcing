@@ -1,6 +1,8 @@
 package com.ilyasgrid.inventoryservice.query.service;
 
+import com.ilyasgrid.inventoryservice.common.event.CategoryCreatedEvent;
 import com.ilyasgrid.inventoryservice.common.event.ProductCreatedEvent;
+import com.ilyasgrid.inventoryservice.common.query.GetAllCategoriesQuery;
 import com.ilyasgrid.inventoryservice.common.query.GetAllProductsQuery;
 import com.ilyasgrid.inventoryservice.query.entity.Category;
 import com.ilyasgrid.inventoryservice.query.entity.Product;
@@ -38,8 +40,22 @@ public class InventoryProjectionHandler {
         productRepository.save(product);
     }
 
-    @QueryHandler
-    public List<Product> handle(GetAllProductsQuery query) {
-        return productRepository.findAll();
+//    @QueryHandler
+//    public List<Product> handle(GetAllProductsQuery query) {
+//        return productRepository.findAll();
+//    }
+
+
+    @EventHandler
+    public void on(CategoryCreatedEvent event) {
+        // Ne cherchez pas l'ID, créez simplement l'entité
+        Category category = Category.builder()
+                .categoryId(event.id())
+                .name(event.name())
+                .build();
+        categoryRepository.save(category);
     }
+
+
+
 }
