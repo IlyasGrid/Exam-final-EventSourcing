@@ -1,7 +1,7 @@
 package com.ilyasgrid.orderservice.common.dto;
 
 
-public record OrderItem(
+public record OrderLineRequestDTO(
         String productId,
         int quantity,
         double price

@@ -11,8 +11,7 @@ public class OrderItem {
     private Long id;
     private String productId;
     private int quantity;
-    private double price; // Unit price at the time of order
-    private double discount;
+    private double price;
 
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
